@@ -1,6 +1,10 @@
 import { PureComponent } from 'react'
 
 class Import extends PureComponent {
+  state = {
+    Component: null,
+  }
+
   componentDidMount() {
     this.load(this.props.component)
   }
@@ -23,7 +27,7 @@ class Import extends PureComponent {
   render() {
     const { component, ...props } = this.props
     const { Component } = this.state
-    return !Component ? null : <Component {...props} />
+    return Component ? <Component {...props} /> : null 
   }
 }
 

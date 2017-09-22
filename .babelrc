@@ -5,8 +5,7 @@
         "browsers": ["last 2 versions"]
       },
       "modules": false,
-      "loose": true,
-      "useBuiltIns": true
+      "loose": true
     }],
     "react",
     "stage-2"

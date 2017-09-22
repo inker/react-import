@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src/index.js --out-file lib/index.js",
+    "build": "babel src --out-dir lib",
     "build-publish": "sh build/publish.sh"
   },
   "repository": {
@@ -13,16 +13,16 @@
     "url": "https://github.com/inker/react-import"
   },
   "keywords": [
-    "blurry",
-    "chrome",
-    "translate3d",
-    "text",
-    "webkit"
+    "react",
+    "lazy",
+    "load",
+    "import",
+    "component"
   ],
   "author": "Anton Veselyev",
   "license": "ISC",
   "peerDependencies": {
-    "react": "^15.6.1"
+    "react": ">=15.0.0"
   },
   "dependencies": {},
   "devDependencies": {

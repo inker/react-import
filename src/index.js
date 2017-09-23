@@ -7,11 +7,11 @@ class Import extends PureComponent {
 
   componentDidMount() {
     const { props } = this
-    this.load(props.component || props.load())
+    this.load(props.load ? props.load() : props.component)
   }
 
   componentWillReceiveProps(nextProps) {
-    this.load(nextProps.component || nextProps.load())
+    this.load(nextProps.load ? nextProps.load() : nextProps.component)
   }
 
   load(component) {

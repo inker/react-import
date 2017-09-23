@@ -6,11 +6,12 @@ class Import extends PureComponent {
   }
 
   componentDidMount() {
-    this.load(this.props.component)
+    const { props } = this
+    this.load(props.component || props.load())
   }
 
   componentWillReceiveProps(nextProps) {
-    this.load(nextProps.component)
+    this.load(nextProps.component || nextProps.load())
   }
 
   load(component) {

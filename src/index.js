@@ -11,6 +11,10 @@ class Import extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
+    const { props } = this
+    if (nextProps.component === props.component && nextProps.load === props.load) {
+      return
+    }
     this.load(nextProps.load ? nextProps.load() : nextProps.component)
   }
 
@@ -18,9 +22,9 @@ class Import extends PureComponent {
     if (!component) {
       return
     }
-    component.then(module => {
+    component.then(mod => {
       this.setState({
-        Component: module.default || module,
+        Component: mod.default || mod,
       })
     })
   }

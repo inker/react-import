@@ -33,6 +33,19 @@ class MyComponent extends PureComponent {
 }
 ```
 
+You can also pass an import function as `load` prop which will be called once the `Import` component is mounted.
+```javascript
+    // ...
+    return (
+      <Import
+        load={() => import('./another-component')}
+        some="prop"
+        another={1}
+      />
+    )
+    // ...
+```
+
 [npm-url]: https://npmjs.org/package/react-import
 [downloads-image]: http://img.shields.io/npm/dm/react-import.svg
 [npm-image]: http://img.shields.io/npm/v/react-import.svg

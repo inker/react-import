@@ -1,6 +1,6 @@
 {
   "name": "react-import",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Lazily import React components",
   "main": "lib/index.js",
   "scripts": {

@@ -30,9 +30,9 @@ class Import extends PureComponent {
   }
 
   render() {
-    const { component, ...props } = this.props
+    const { component, loading, ...props } = this.props
     const { Component } = this.state
-    return Component ? <Component {...props} /> : null 
+    return Component ? <Component {...props} /> : loading
   }
 }
 

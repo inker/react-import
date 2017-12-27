@@ -26,6 +26,10 @@ class Import extends PureComponent {
       this.setState({
         Component: mod.default || mod,
       })
+      const { onLoad } = this.props
+      if (onLoad) {
+        onLoad()
+      }
     })
   }
 

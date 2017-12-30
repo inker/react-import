@@ -46,6 +46,21 @@ You can also pass an import function as `load` prop which will be called once th
     // ...
 ```
 
+Additional props can be used: `loading` specifying the React component which should be displayed while the `component` is loading, and `onLoad` function called once the `component` is loaded.
+```javascript
+    // ...
+    return (
+      <Import
+        component={import('./another-component')}
+        loading={<div>wait...</div>}
+        onLoad={() => console.log('hooray!')}
+        some="prop"
+        another={1}
+      />
+    )
+    // ...
+```
+
 [npm-url]: https://npmjs.org/package/react-import
 [downloads-image]: http://img.shields.io/npm/dm/react-import.svg
 [npm-image]: http://img.shields.io/npm/v/react-import.svg

@@ -50,17 +50,23 @@ var Import = function (_PureComponent) {
       _this2.setState({
         Component: mod.default || mod
       });
+      var onLoad = _this2.props.onLoad;
+
+      if (onLoad) {
+        onLoad();
+      }
     });
   };
 
   Import.prototype.render = function render() {
     var _props = this.props,
         component = _props.component,
-        props = _objectWithoutProperties(_props, ['component']);
+        loading = _props.loading,
+        props = _objectWithoutProperties(_props, ['component', 'loading']);
 
     var Component = this.state.Component;
 
-    return Component ? React.createElement(Component, props) : null;
+    return Component ? React.createElement(Component, props) : loading || null;
   };
 
   return Import;

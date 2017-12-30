@@ -54,8 +54,6 @@ Additional props can be used: `loading` specifying the React component which sho
         component={import('./another-component')}
         loading={<div>wait...</div>}
         onLoad={() => console.log('hooray!')}
-        some="prop"
-        another={1}
       />
     )
     // ...

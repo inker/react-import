@@ -1,55 +1,62 @@
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 import React, { PureComponent } from 'react';
 
-var Import = function (_PureComponent) {
-  _inherits(Import, _PureComponent);
+var Import =
+/*#__PURE__*/
+function (_PureComponent) {
+  _inheritsLoose(Import, _PureComponent);
 
   function Import() {
-    var _temp, _this, _ret;
+    var _temp, _this;
 
-    _classCallCheck(this, Import);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _PureComponent.call.apply(_PureComponent, [this].concat(args))), _this), _this.state = {
-      Component: null
-    }, _temp), _possibleConstructorReturn(_this, _ret);
+    return (_temp = _this = _PureComponent.call.apply(_PureComponent, [this].concat(args)) || this, Object.defineProperty(_assertThisInitialized(_this), "state", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: {
+        Component: null
+      }
+    }), _temp) || _assertThisInitialized(_this);
   }
 
-  Import.prototype.componentDidMount = function componentDidMount() {
-    var props = this.props;
+  var _proto = Import.prototype;
 
+  _proto.componentDidMount = function componentDidMount() {
+    var props = this.props;
     this.load(props.load ? props.load() : props.component);
   };
 
-  Import.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+  _proto.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
     var props = this.props;
 
     if (nextProps.component === props.component && nextProps.load === props.load) {
       return;
     }
+
     this.load(nextProps.load ? nextProps.load() : nextProps.component);
   };
 
-  Import.prototype.load = function load(component) {
+  _proto.load = function load(component) {
     var _this2 = this;
 
     if (!component) {
       return;
     }
+
     component.then(function (mod) {
       _this2.setState({
         Component: mod.default || mod
       });
+
       var onLoad = _this2.props.onLoad;
 
       if (onLoad) {
@@ -58,14 +65,13 @@ var Import = function (_PureComponent) {
     });
   };
 
-  Import.prototype.render = function render() {
+  _proto.render = function render() {
     var _props = this.props,
         component = _props.component,
         loading = _props.loading,
-        props = _objectWithoutProperties(_props, ['component', 'loading']);
+        props = _objectWithoutProperties(_props, ["component", "loading"]);
 
     var Component = this.state.Component;
-
     return Component ? React.createElement(Component, props) : loading || null;
   };
 

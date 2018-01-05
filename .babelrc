@@ -1,27 +1,27 @@
 {
   "presets": [
-    ["env", {
+    ["@babel/preset-env", {
       "targets": {
         "browsers": ["last 2 versions"]
       },
       "modules": false,
       "loose": true
     }],
-    "react",
-    "stage-2"
+    "@babel/preset-react",
+    "@babel/preset-stage-2"
   ],
   "env": {
     "commonjs": {
       "presets": [
-        ["env", {
+        ["@babel/preset-env", {
           "targets": {
             "browsers": ["last 2 versions"]
           },
           "modules": "commonjs",
           "loose": true,
-          "useBuiltIns": true
+          "useBuiltIns": "entry"
         }],
-        "stage-2"
+        "@babel/preset-stage-2"
       ]
     }
   }

@@ -21,13 +21,13 @@ class MyComponent extends PureComponent {
   render() {
     // ...
     return (
-      <div>
+      <>
         <Import
           component={import('./another-component')}
           some="prop"
           another={1}
         />
-      </div>
+      </>
     )
   }
 }
@@ -46,14 +46,16 @@ You can also pass an import function as `load` prop which will be called once th
     // ...
 ```
 
-Additional props can be used: `loading` specifying the React component which should be displayed while the `component` is loading, and `onLoad` function called once the `component` is loaded.
+Additional props can be used: `loading` specifying the React component which should be displayed while the `component` is loading, and `onLoad` function called once the `component` is loaded, `error` specifying the React component which should be displayed on error, and `onError` function called on error.
 ```javascript
     // ...
     return (
       <Import
         component={import('./another-component')}
         loading={<div>wait...</div>}
-        onLoad={() => console.log('hooray!')}
+        error={<div>error!</div>}
+        onLoad={() => console.log('component has loaded!')}
+        onError={() => console.error('component has failed to load :('))}
       />
     )
     // ...

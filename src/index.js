@@ -30,6 +30,16 @@ class Import extends PureComponent {
       if (onLoad) {
         onLoad()
       }
+    }).catch(err => {
+      const { props } = this
+      this.setState({
+        Component: props.error,
+      })
+      if (props.onError) {
+        props.onError(err)
+      } else {
+        throw new Error(err)
+      }
     })
   }
 

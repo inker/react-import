@@ -62,6 +62,18 @@ function (_PureComponent) {
       if (onLoad) {
         onLoad();
       }
+    }).catch(function (err) {
+      var props = _this2.props;
+
+      _this2.setState({
+        Component: props.error
+      });
+
+      if (props.onError) {
+        props.onError(err);
+      } else {
+        throw new Error(err);
+      }
     });
   };
 

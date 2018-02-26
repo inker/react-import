@@ -47,7 +47,7 @@ class Import extends PureComponent {
     const {
       component,
       load,
-      ...props,
+      ...props
     } = this.props
     const { Component } = this.state
     return Component ? <Component {...props} /> : props.loading || null
